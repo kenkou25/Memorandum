@@ -1,0 +1,30 @@
+GitHubからCloneしたリポジトリでPushするときのメモ
+
+SSH接続の設定をしておくと、ユーザとパスワードを聞かれないで済む
+
+1.設定済みか確認
+　GitBash
+　$ ls ~/.ssh
+　※下記2ファイルがあれば大丈夫
+　　id_rsa（秘密鍵）
+　　id_rsa.pub（公開鍵）
+2.無い場合は作成
+　$ ssh-keygen -t rsa -C "GitHubに登録したメールアドレス"
+　※オプションは全てEnterでOK
+3.公開鍵をコピー
+　$ clip < ~/.ssh/id_rsa.pub
+4.GitHubに公開鍵を登録
+　GitHub > SSLの設定ページ > New > タイトル設定 > 公開鍵を貼付け
+5.設定がうまくいったか確認
+　$ ssh -T git@github.com
+
+●HTTPSでCloneした場合
+　下記設定をしておくと、PushするときSSHに読み換えてくれる
+　$ git config --global "url.git@github.com:.pushinsteadof" "https://github.com/"
+
+＜参考URL＞
+SSHの公開鍵を作成しGithubに登録する手順
+http://monsat.hatenablog.com/entry/generating-ssh-keys-for-github
+
+githubのリポジトリにアクセスするとパスワードを求められる時の対処
+http://qiita.com/nysalor/items/f779898eb88c1ce7be12
