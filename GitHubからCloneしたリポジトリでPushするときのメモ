@@ -1,7 +1,18 @@
 GitHubからCloneしたリポジトリでPushするときのメモ
+（Windows）
 
+[経緯]
+Visual Studio CodeでソースをPushしようとしたら固まってしまった
+
+[理由]
+Pushコマンドを実行したときに認証が発生して固まってるっぽい
+-> コマンド < $ git push origin master > を実行したとき、
+　 GitHubからCloneしているとユーザとパスワードを聞いてくる
+
+[対処方法]
 SSH接続の設定をしておくと、ユーザとパスワードを聞かれないで済む
 
+[手順]
 1.設定済みか確認
 　GitBash
 　$ ls ~/.ssh
